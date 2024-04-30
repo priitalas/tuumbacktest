@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-27 17:23:30.39
+-- Last modification date: 2024-04-30 15:29:38.024
 
 -- tables
 -- Table: account
@@ -42,6 +42,16 @@ CREATE TABLE transaction_direction (
     CONSTRAINT transaction_direction_pk PRIMARY KEY (id)
 );
 
+-- Table: transaction_history
+CREATE TABLE transaction_history (
+    id serial  NOT NULL,
+    date date  NOT NULL,
+    time time  NOT NULL,
+    account_id int  NOT NULL,
+    transaction_direction_id int  NOT NULL,
+    CONSTRAINT transaction_history_pk PRIMARY KEY (id)
+);
+
 -- foreign keys
 -- Reference: account_currencies (table: account)
 ALTER TABLE account ADD CONSTRAINT account_currencies
@@ -71,6 +81,22 @@ ALTER TABLE customer ADD CONSTRAINT customer_country
 ALTER TABLE customer ADD CONSTRAINT customer_currencies
     FOREIGN KEY (currencies_id)
     REFERENCES currencies (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: transaction_history_account (table: transaction_history)
+ALTER TABLE transaction_history ADD CONSTRAINT transaction_history_account
+    FOREIGN KEY (account_id)
+    REFERENCES account (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: transaction_history_transaction_direction (table: transaction_history)
+ALTER TABLE transaction_history ADD CONSTRAINT transaction_history_transaction_direction
+    FOREIGN KEY (transaction_direction_id)
+    REFERENCES transaction_direction (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;

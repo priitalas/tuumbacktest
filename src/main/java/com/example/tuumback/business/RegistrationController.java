@@ -22,9 +22,9 @@ public class RegistrationController {
 
     }
 
-    @GetMapping("/registration")
-    // toob alt uue kasutaja ID ja konto ID ja kontojäägi
 
+
+        // toob alt uue kasutaja ID ja konto ID ja kontojäägi}
 
 
 }
