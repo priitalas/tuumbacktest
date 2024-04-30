@@ -1,7 +1,7 @@
 package com.example.tuumback.domain.customer;
 
-import com.example.tuumback.domain.Country;
-import com.example.tuumback.domain.Currency;
+import com.example.tuumback.domain.country.Country;
+import com.example.tuumback.domain.currency.Currency;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

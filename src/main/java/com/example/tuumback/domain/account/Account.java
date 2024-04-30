@@ -1,5 +1,6 @@
-package com.example.tuumback.domain;
+package com.example.tuumback.domain.account;
 
+import com.example.tuumback.domain.currency.Currency;
 import com.example.tuumback.domain.customer.Customer;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

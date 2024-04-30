@@ -1,4 +1,4 @@
-package com.example.tuumback.domain;
+package com.example.tuumback.domain.country;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

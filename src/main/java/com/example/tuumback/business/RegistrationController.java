@@ -1,13 +1,8 @@
 package com.example.tuumback.business;
 
 import com.example.tuumback.business.dto.RegistrationRequest;
-import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
-import org.springframework.jmx.export.annotation.ManagedOperationParameters;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -22,7 +17,10 @@ public class RegistrationController {
 
     }
 
-
+    @GetMapping("/registration")
+    public void getNewCustomerInfo(@PathVariable Integer customerId) {
+        registrationService.getNewCustomerInfo(customerId);
+    }
 
         // toob alt uue kasutaja ID ja konto ID ja kontojäägi}
 
