@@ -22,7 +22,7 @@ public class RegistrationController {
 
     }
 
-    @GetMapping(/registration)
+    @GetMapping("/registration")
     // toob alt uue kasutaja ID ja konto ID ja kontojäägi
 
 
