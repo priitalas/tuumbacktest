@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class RegistrationRequest implements Serializable {
     private String countryName;
-    private String currencies;
+   // private String currencies;
     @NotNull
     private Integer customerId;
 }

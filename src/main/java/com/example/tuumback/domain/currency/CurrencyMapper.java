@@ -6,7 +6,8 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface CurrencyMapper {
 
-    Currency toCurrency(RegistrationRequest registrationRequest);
+   // @Mapping(source = "currencies", target = "currency")
+    //Currency toCurrency(RegistrationRequest registrationRequest);
 
 
 }
