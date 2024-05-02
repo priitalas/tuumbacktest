@@ -6,11 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
 
-
-
-  //  @Query("select a from Account a where a.customer.id = :customerId")
-    //Account getRegistrationInfo(Integer customerId);
-
-    @Query("select a from Account a where a.customer.customerId = ?1")
-    Account getRegistrationInfo(Integer customerId);
+    @Query("select a from Account a where a.customer.id = ?1")
+    Account getRegistrationInfo(Integer id);
 }

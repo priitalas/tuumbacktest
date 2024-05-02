@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-04-30 15:29:38.024
+-- Last modification date: 2024-05-02 10:50:31.569
 
 -- tables
 -- Table: account
@@ -13,7 +13,7 @@ CREATE TABLE account (
 
 -- Table: country
 CREATE TABLE country (
-    id serial  NOT NULL,
+    id int  NOT NULL,
     country_name varchar(255)  NOT NULL,
     CONSTRAINT country_pk PRIMARY KEY (id)
 );
@@ -21,7 +21,7 @@ CREATE TABLE country (
 -- Table: currencies
 CREATE TABLE currencies (
     id serial  NOT NULL,
-    currency varchar(255)  NOT NULL,
+    currency varchar(3)  NOT NULL,
     CONSTRAINT currencies_pk PRIMARY KEY (id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE customer (
     id serial  NOT NULL,
     country_id int  NOT NULL,
     currencies_id int  NOT NULL,
-    customer_id int  NOT NULL,
+    personal_id int  NOT NULL,
     CONSTRAINT customer_pk PRIMARY KEY (id)
 );
 
@@ -45,10 +45,10 @@ CREATE TABLE transaction_direction (
 -- Table: transaction_history
 CREATE TABLE transaction_history (
     id serial  NOT NULL,
-    date date  NOT NULL,
-    time time  NOT NULL,
     account_id int  NOT NULL,
     transaction_direction_id int  NOT NULL,
+    date date  NOT NULL,
+    time time  NOT NULL,
     CONSTRAINT transaction_history_pk PRIMARY KEY (id)
 );
 

@@ -30,7 +30,7 @@ public class Customer {
     private Currency currencies;
 
     @NotNull
-    @Column(name = "customer_id", nullable = false)
-    private Integer customerId;
+    @Column(name = "personal_id", nullable = false)
+    private Integer personalId;
 
 }

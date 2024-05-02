@@ -1,6 +1,5 @@
 package com.example.tuumback.infrastructure.validation;
 
-import com.example.tuumback.domain.customer.Customer;
 import com.example.tuumback.infrastructure.exceptions.ForbiddenException;
 
 import static com.example.tuumback.infrastructure.error.Error.CUSTOMER_UNAVAILABLE;

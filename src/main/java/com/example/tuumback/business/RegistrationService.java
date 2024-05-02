@@ -8,7 +8,6 @@ import com.example.tuumback.domain.account.AccountRepository;
 import com.example.tuumback.domain.country.Country;
 import com.example.tuumback.domain.country.CountryMapper;
 import com.example.tuumback.domain.country.CountryRepository;
-import com.example.tuumback.domain.currency.Currency;
 import com.example.tuumback.domain.currency.CurrencyMapper;
 import com.example.tuumback.domain.currency.CurrencyRepository;
 import com.example.tuumback.domain.customer.Customer;
@@ -34,8 +33,8 @@ public class RegistrationService {
 
 
     public void registerNewCustomer(RegistrationRequest registrationRequest) {
-        boolean customerIdExists = customerRepository.customerIdExists(registrationRequest.getCustomerId());
-        ValidationService.validateCustomerIdAvailable(customerIdExists);
+        boolean personalId = customerRepository.personalIdExists(registrationRequest.getPersonalId());
+        ValidationService.validateCustomerIdAvailable(personalId);
         Customer customer = customerMapper.toCustomer(registrationRequest);
         customerRepository.save(customer);
         Country country = countryMapper.toCountry(registrationRequest);
@@ -47,9 +46,12 @@ public class RegistrationService {
     }
 
 
-    public RegistrationInfo getNewCustomerInfo(Integer customerId) {
-        Account account = accountRepository.getRegistrationInfo(customerId);
-        RegistrationInfo registrationInfo = accountMapper.toRegistrationInfo(account);
+    public RegistrationInfo getNewCustomerInfo(Integer personalId) {
+        Customer customer = customerRepository.getNewCustomerInfo(personalId);
+        RegistrationInfo registrationInfo = customerMapper.toRegistrationInfo(customer);
+
+
+
         return registrationInfo;
     }
 }

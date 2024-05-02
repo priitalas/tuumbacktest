@@ -17,5 +17,5 @@ public class RegistrationRequest implements Serializable {
     private String countryName;
    // private String currencies;
     @NotNull
-    private Integer customerId;
+    private Integer personalId;
 }

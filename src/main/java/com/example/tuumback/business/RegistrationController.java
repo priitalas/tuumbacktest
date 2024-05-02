@@ -16,8 +16,8 @@ public class RegistrationController {
     }
 
     @GetMapping("/registration")
-    public RegistrationInfo getNewCustomerInfo(@RequestParam Integer customerId) {
-        RegistrationInfo registrationInfo = registrationService.getNewCustomerInfo(customerId);
+    public RegistrationInfo getNewCustomerInfo(@RequestParam Integer personalId) {
+        RegistrationInfo registrationInfo = registrationService.getNewCustomerInfo(personalId);
         return registrationInfo;
     }
 
