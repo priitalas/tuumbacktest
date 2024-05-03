@@ -1,13 +1,14 @@
-package com.example.tuumback.business;
+package com.example.tuumback.business.registration;
 
-import com.example.tuumback.business.dto.RegistrationInfo;
-import com.example.tuumback.business.dto.RegistrationRequest;
+import com.example.tuumback.business.registration.dto.RegistrationInfo;
+import com.example.tuumback.business.registration.dto.RegistrationRequest;
 import com.example.tuumback.domain.account.Account;
 import com.example.tuumback.domain.account.AccountMapper;
 import com.example.tuumback.domain.account.AccountRepository;
 import com.example.tuumback.domain.country.Country;
 import com.example.tuumback.domain.country.CountryMapper;
 import com.example.tuumback.domain.country.CountryRepository;
+import com.example.tuumback.domain.currency.Currency;
 import com.example.tuumback.domain.currency.CurrencyMapper;
 import com.example.tuumback.domain.currency.CurrencyRepository;
 import com.example.tuumback.domain.customer.Customer;
@@ -32,26 +33,28 @@ public class RegistrationService {
     private final AccountMapper accountMapper;
 
 
-    public void registerNewCustomer(RegistrationRequest registrationRequest) {
-        boolean personalId = customerRepository.personalIdExists(registrationRequest.getPersonalId());
-        ValidationService.validateCustomerIdAvailable(personalId);
-        Customer customer = customerMapper.toCustomer(registrationRequest);
+    public void registerNewCustomer(RegistrationInfo registrationInfo) {
+        boolean personalIdExists = customerRepository.personalIdExists(registrationInfo.getPersonalId());
+        ValidationService.validateCustomerIdAvailable(personalIdExists);
+        Customer customer = customerMapper.toCustomer(registrationInfo);
         customerRepository.save(customer);
-        Country country = countryMapper.toCountry(registrationRequest);
+        Country country = countryMapper.toCountry(registrationInfo);
         countryRepository.save(country);
-       // boolean currencyNotExists = currencyRepository.invalidCurrency(registrationRequest.getCurrencies());
-        //ValidationService.currencyNotExists(currencyNotExists);
-        //Currency currency = currencyMapper.toCurrency(registrationRequest);
-        //currencyRepository.save(currency);
+        boolean currencyNotExists = currencyRepository.invalidCurrency(registrationInfo.getCurrency());
+        ValidationService.currencyNotExists(currencyNotExists);
+        Currency currency = currencyMapper.toCurrency(registrationInfo);
+        currency.setCurrency(toString());
+
     }
 
 
-    public RegistrationInfo getNewCustomerInfo(Integer personalId) {
+    public RegistrationRequest getNewCustomerInfo(Integer personalId) {
         Customer customer = customerRepository.getNewCustomerInfo(personalId);
-        RegistrationInfo registrationInfo = customerMapper.toRegistrationInfo(customer);
+        RegistrationRequest registrationRequest = customerMapper.toRegistrationInfo(customer);
+        Account account = accountRepository.getRegistrationInfo(registrationRequest.getAccountId());
+        registrationRequest.setAccountId(account.getId());
+        registrationRequest.setAvailableAmount(account.getAvailableAmount());
 
-
-
-        return registrationInfo;
+        return registrationRequest;
     }
 }

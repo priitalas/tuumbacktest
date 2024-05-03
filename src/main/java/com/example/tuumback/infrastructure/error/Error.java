@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 public enum Error {
     CUSTOMER_UNAVAILABLE("This customer Id already exists", 111),
-    INVALID_CURRENCY("Invalid currency", 222);
-
+    INVALID_CURRENCY("Invalid currency! Available currencies: EUR, SEK, GBP, USD", 222),
+    ACCOUNT_NOT_FOUND("Account not found", 333);
 
     private final String message;
     private final int errorCode;

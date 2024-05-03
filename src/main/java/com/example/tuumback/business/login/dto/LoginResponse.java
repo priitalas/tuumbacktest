@@ -1,4 +1,4 @@
-package com.example.tuumback.business.dto;
+package com.example.tuumback.business.login.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationInfo implements Serializable {
+public class LoginResponse implements Serializable {
     private Integer accountId;
     private Integer customerId;
     private String currency;

@@ -1,4 +1,4 @@
-package com.example.tuumback.business.dto;
+package com.example.tuumback.business.registration.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -13,9 +13,9 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationRequest implements Serializable {
+public class RegistrationInfo implements Serializable {
     private String countryName;
-   // private String currencies;
+    private String currency;
     @NotNull
     private Integer personalId;
 }

@@ -1,9 +1,11 @@
 package com.example.tuumback.infrastructure.validation;
 
+import com.example.tuumback.domain.account.Account;
 import com.example.tuumback.infrastructure.exceptions.ForbiddenException;
 
-import static com.example.tuumback.infrastructure.error.Error.CUSTOMER_UNAVAILABLE;
-import static com.example.tuumback.infrastructure.error.Error.INVALID_CURRENCY;
+import java.util.Optional;
+
+import static com.example.tuumback.infrastructure.error.Error.*;
 
 public class ValidationService {
 
@@ -17,6 +19,13 @@ public class ValidationService {
         if (currencyNotExists){
             throw new ForbiddenException(INVALID_CURRENCY.getMessage(), INVALID_CURRENCY.getErrorCode());
         }
+    }
+
+    public static void validateAccountNotExists(boolean accountNotExists) {
+        if (accountNotExists) {
+            throw new ForbiddenException(ACCOUNT_NOT_FOUND.getMessage(), ACCOUNT_NOT_FOUND.getErrorCode());
+        }
+
     }
 }
 

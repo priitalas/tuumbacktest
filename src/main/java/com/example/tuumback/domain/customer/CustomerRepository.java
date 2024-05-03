@@ -10,7 +10,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("select (count(c) > 0) from Customer c where c.personalId = :personalId")
     boolean personalIdExists(Integer personalId);
 
-    @Query("select c from Customer c where c.personalId = ?1")
+    @Query("select c from Customer c where c.personalId = :personalId")
     Customer getNewCustomerInfo(Integer personalId);
 
 
