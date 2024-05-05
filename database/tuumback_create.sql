@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-05-02 10:50:31.569
+-- Last modification date: 2024-05-05 19:30:16.729
 
 -- tables
 -- Table: account
@@ -49,7 +49,7 @@ CREATE TABLE transaction_history (
     transaction_direction_id int  NOT NULL,
     date date  NOT NULL,
     time time  NOT NULL,
-    transaction_amount int NOT NULL,
+    transaction_amount int  NOT NULL,
     CONSTRAINT transaction_history_pk PRIMARY KEY (id)
 );
 

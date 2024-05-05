@@ -1,6 +1,7 @@
 package com.example.tuumback.infrastructure.validation;
 
 import com.example.tuumback.domain.account.Account;
+import com.example.tuumback.domain.transaction.TransactionHistory;
 import com.example.tuumback.infrastructure.exceptions.ForbiddenException;
 
 import java.util.Optional;
@@ -21,11 +22,12 @@ public class ValidationService {
         }
     }
 
-    public static Account getValidexistingAccount(Optional<Account> optionalAccount) {
+    public static Account getValidExistingAccount(Optional<Account> optionalAccount) {
         if (optionalAccount.isEmpty()) {
             throw new ForbiddenException(INCORRECT_CREDENTIALS.getMessage(), INCORRECT_CREDENTIALS.getErrorCode());
         }
         return optionalAccount.get();
     }
+
 }
 

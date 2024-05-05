@@ -20,7 +20,7 @@ public class LoginService {
 
     public LoginResponse login(Integer accountId) {
         Optional<Account> optionalAccount = accountRepository.findAccountBy(accountId);
-        Account account = ValidationService.getValidexistingAccount(optionalAccount);
+        Account account = ValidationService.getValidExistingAccount(optionalAccount);
         return accountMapper.toLoginResponse(account);
     }
 }
