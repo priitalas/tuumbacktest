@@ -6,12 +6,10 @@ import org.mapstruct.*;
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface AccountMapper {
 
-
-
-
-
     @Mapping(source = "availableAmount", target = "availableAmount")
-    LoginResponse toLoginResponse (LoginResponse loginResponse);
-
+    @Mapping(source = "currencies.currency", target = "currency")
+    @Mapping(source = "customer.id", target = "customerId")
+    @Mapping(source = "id", target = "accountId")
+    LoginResponse toLoginResponse (Account account);
 
 }

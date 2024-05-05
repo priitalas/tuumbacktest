@@ -49,6 +49,7 @@ CREATE TABLE transaction_history (
     transaction_direction_id int  NOT NULL,
     date date  NOT NULL,
     time time  NOT NULL,
+    transaction_amount int NOT NULL,
     CONSTRAINT transaction_history_pk PRIMARY KEY (id)
 );
 

@@ -21,11 +21,11 @@ public class ValidationService {
         }
     }
 
-    public static void validateAccountNotExists(boolean accountNotExists) {
-        if (accountNotExists) {
-            throw new ForbiddenException(ACCOUNT_NOT_FOUND.getMessage(), ACCOUNT_NOT_FOUND.getErrorCode());
+    public static Account getValidexistingAccount(Optional<Account> optionalAccount) {
+        if (optionalAccount.isEmpty()) {
+            throw new ForbiddenException(INCORRECT_CREDENTIALS.getMessage(), INCORRECT_CREDENTIALS.getErrorCode());
         }
-
+        return optionalAccount.get();
     }
 }
 

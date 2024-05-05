@@ -11,8 +11,8 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     @Query("select a from Account a where a.customer.id = :personalId")
     Account getRegistrationInfo(Integer personalId);
 
-    @Query("select (count(a) > 0) from Account a where a.id = :accountId")
-    boolean findExistsAccount(Integer accountId);
+    @Query("select a from Account a where a.id = :accountId")
+    Optional<Account> findAccountBy(Integer accountId);
 
 
 }

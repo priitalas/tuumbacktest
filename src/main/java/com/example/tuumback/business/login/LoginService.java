@@ -19,12 +19,8 @@ public class LoginService {
     private final AccountMapper accountMapper;
 
     public LoginResponse login(Integer accountId) {
-        boolean accountAlreadyExists = accountRepository.findExistsAccount(accountId);
-        ValidationService.validateAccountNotExists(accountAlreadyExists);
-
-
-
-
-        return ;
+        Optional<Account> optionalAccount = accountRepository.findAccountBy(accountId);
+        Account account = ValidationService.getValidexistingAccount(optionalAccount);
+        return accountMapper.toLoginResponse(account);
     }
 }
