@@ -18,8 +18,6 @@ public class LoginController {
     @GetMapping("/login")
     public LoginResponse login (@RequestParam Integer accountId){
        return loginService.login(accountId);
-
-
     }
 
 }

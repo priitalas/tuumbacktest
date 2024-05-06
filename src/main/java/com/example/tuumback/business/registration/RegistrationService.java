@@ -32,7 +32,6 @@ public class RegistrationService {
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
 
-
     public void registerNewCustomer(RegistrationInfo registrationInfo) {
         boolean personalIdExists = customerRepository.personalIdExists(registrationInfo.getPersonalId());
         ValidationService.validateCustomerIdAvailable(personalIdExists);
@@ -44,9 +43,7 @@ public class RegistrationService {
         ValidationService.currencyNotExists(currencyNotExists);
         Currency currency = currencyMapper.toCurrency(registrationInfo);
         currency.setCurrency(toString());
-
     }
-
 
     public RegistrationRequest getNewCustomerInfo(Integer personalId) {
         Customer customer = customerRepository.getNewCustomerInfo(personalId);
@@ -54,7 +51,6 @@ public class RegistrationService {
         Account account = accountRepository.getRegistrationInfo(registrationRequest.getAccountId());
         registrationRequest.setAccountId(account.getId());
         registrationRequest.setAvailableAmount(account.getAvailableAmount());
-
         return registrationRequest;
     }
 }

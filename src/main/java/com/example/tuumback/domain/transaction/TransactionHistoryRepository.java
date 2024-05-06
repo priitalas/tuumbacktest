@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface TransactionHistoryRepository extends JpaRepository<TransactionHistory, Integer> {
 
-
     @Query("select t from TransactionHistory t where t.account.id = :accountId")
     List<TransactionHistoryInfo> getTransactionListBy(Integer accountId);
 }

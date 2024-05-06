@@ -9,5 +9,4 @@ public interface CurrencyMapper {
    @Mapping(source = "currency", target = "currency")
    Currency toCurrency(RegistrationInfo registrationInfo);
 
-
 }

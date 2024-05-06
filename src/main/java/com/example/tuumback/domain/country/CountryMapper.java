@@ -9,5 +9,4 @@ public interface CountryMapper {
     @Mapping(source = "countryName", target = "countryName")
     Country toCountry(RegistrationInfo registrationInfo);
 
-
 }

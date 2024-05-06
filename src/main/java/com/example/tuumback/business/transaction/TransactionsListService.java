@@ -16,7 +16,6 @@ public class TransactionsListService {
     private final TransactionHistoryRepository transactionHistoryRepository;
     private final TransactionHistoryMapper transactionHistoryMapper;
 
-
     public List<TransactionHistoryInfo> getTransactionsList(Integer accountId) {
        List<TransactionHistoryInfo> transactionHistoryInfos = transactionHistoryRepository.getTransactionListBy(accountId);
             return transactionHistoryMapper.toTransactionHistoryInfos(transactionHistoryInfos);

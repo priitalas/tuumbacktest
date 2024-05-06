@@ -14,5 +14,4 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
     @Query("select a from Account a where a.id = :accountId")
     Optional<Account> findAccountBy(Integer accountId);
 
-
 }

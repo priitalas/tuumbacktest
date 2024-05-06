@@ -13,8 +13,6 @@ import java.util.List;
 public class TransactionsListController {
 
     private TransactionsListService  transactionsListService;
-
-
     @GetMapping("/transactions-list")
     public List<TransactionHistoryInfo> getTransactionsList(@RequestParam Integer accountId){
         return transactionsListService.getTransactionsList(accountId);
